@@ -23,9 +23,20 @@ docker pull halalchain/nox-dag
 ```
 * <font color=Chocolate size=3>Finally, we can run this every time we start it up.</font>
 ```
-docker run -i -t -p 1234:1234 -p 18130:18130 halalchain/nox-dag --miningaddr=[Your]
+docker run -it -p 18130:18130 -p 18131:18131 halalchain/nox-dag --miningaddr=[Your]
 ```
 
+---
+
+## CLI
+* If you have some advanced requirements, or just want to test your full node, you can use the `cli` we carefully prepared for you.
+```
+docker run --rm halalchain/nox-dag cli [commands]
+```
+* For example, if you want to get the current total number of blocks, you can use the following command:
+```
+docker run --rm halalchain/nox-dag cli block
+```
 ---
 
 ## About configuration
@@ -48,7 +59,7 @@ docker run -i -t -p 1234:1234 -p 18130:18130 halalchain/nox-dag --miningaddr=[Yo
 
 * For example:
 ```
-docker run -i -t -p 1234:1234 -p 18130:18130 halalchain/nox-dag --miningaddr=[Your] --addpeer=47.103.194.115:18130
+docker run -it -p 18130:18130 -p 18131:18131 halalchain/nox-dag --miningaddr=[Your] --addpeer=47.103.194.115:18130
 ```
 
 
