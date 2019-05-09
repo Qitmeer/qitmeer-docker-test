@@ -1,7 +1,7 @@
 # <font color=Chocolate size=6>Nox-DAG</font>
 
 ## Abstract
-Introduce how to quickly erect Nox-DAG Network
+Introduce how to quickly establish the Nox-DAG Network
 
 ---
 
