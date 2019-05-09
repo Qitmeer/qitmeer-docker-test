@@ -51,7 +51,7 @@ docker run --rm halalchain/nox-dag cli block
 | Server Name | IP Address | Describe |
 | --- | --- | ---|
 | Dagfans | 47.103.194.115:18130 | Shanghai |
-| ??? | ??? | Shanghai |
+| Pool | 42.51.64.58:38130 | Shanghai |
 | ??? | ??? | Xi'an |
 
 <font color=Gray size=3>If you haven't turned on DNS Seed service, you can use "addpeer" to add the above servers manually as your peers.</font>
