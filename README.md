@@ -48,7 +48,7 @@ docker run --rm halalchain/nox-dag nx [commands]
 ```
 docker run --rm halalchain/nox-dag nx ec-new 129caa46406db9c4708016131fa518f1736f5a4c30195b0f0a12854d440e053e | nx ec-to-public | nx ec-to-addr
 ```
-
+'129caa...' This is a seed, You can set it up at will.
 ---
 
 ## About configuration
