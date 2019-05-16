@@ -30,7 +30,12 @@
 ### 4.cost the coinbase to create 999 rand address
     
 ### 6.Run the script to generate raw hash
+
+    params:
+        first block height
+        end block height
+        network private | test
     
     spend block 1 which can cost
         
-    ./batch 1 1
+    ./batch 1 1 private
