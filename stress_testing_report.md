@@ -39,7 +39,7 @@ Software Configurations:
 4. Disk: Turxun 120 SSD
 
 ## Build Qitmeer-DAG Network
-How to quickly establish the Qitmeer-DAG Network, see [here.](https://github.com/HalalChain/Nox-DAG-test/blob/master/README.md)
+How to quickly run the Qitmeer-DAG Network, see [here.](https://github.com/HalalChain/Nox-DAG-test/blob/master/README.md)
 
 ## Run miner
 How to quickly run a miner, see [here.](https://github.com/HalalChain/hlc-miner/blob/master/README.md)
@@ -47,8 +47,7 @@ How to quickly run a miner, see [here.](https://github.com/HalalChain/hlc-miner/
 ## Test Step
 - Configure the test environment
 - Create accounts(addresses and private keys)
-- Start Qitmeer-DAG nodes
-Script: To be added
+- Run Qitmeer-DAG nodes
 - Configurate miner<br>
 Configure the address of the sending transaction account to the mining address:<br> 
 ```asciidoc
@@ -108,6 +107,7 @@ num of TXs | send rate | success % | num of blocks | duration | TPS
 ## Conclusion
 During the test, different transmission rates were used and different transaction volumes were tested. 
 The test results TPS reached more than 5.
+
 some issue：
 - connection timed out error:
 ![connectionTimeOut](./images/connectionTimeOut.jpg)
