@@ -1,4 +1,4 @@
-# DAG Bench test create sign raw transaction hash script
+# DAG create sign raw transaction hash script
 
 ## The Step
 
@@ -14,7 +14,7 @@
         pk :
         pub :
         
-     ./bench --network test --action generate-new-address
+     ./script --network test --action generate-new-address
 
     2.start a node with modify some config up to machine config
 
@@ -39,17 +39,17 @@
     
     git clone git@github.com:jamesvan2019/Nox-DAG-test.git
     
-    cd Nox-DAG-test/bench
+    cd Nox-DAG-test/script
     go build
     
 ## Run
     create new address 
     
-    ./bench --network test  --action generate-new-address
+    ./script --network test  --action generate-new-address
     
     create 999 transactions (the height is the coinbase reward to your address which you can cost)
     
-    ./bench --faddress=(your address which has much money) --privkey=xxxxxx -s (your node rpc server) -u (your node rpc user) -P (your node rpc pass) --addressfile=/tmp/address.csv --txfile=/tmp/tx.csv --notls --network=$network --height=1
+    ./script --faddress=(your address which has much money) --privkey=xxxxxx -s (your node rpc server) -u (your node rpc user) -P (your node rpc pass) --addressfile=/tmp/address.csv --txfile=/tmp/tx.csv --notls --network=$network --height=1
     
     above command you can create 999 addresses in /tmp/address.csv1
     
@@ -57,7 +57,7 @@
         
     you can create more signed transactions with shell script
     
-    if add --send true the signed transactions will send to the node rpc,if you want bench test ,don't use this
+    if add --send true the signed transactions will send to the node rpc,if you want script test ,don't use this
     
     ./batch 1 30 test
     
