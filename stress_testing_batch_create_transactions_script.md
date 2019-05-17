@@ -14,7 +14,7 @@
         pk :
         pub :
         
-     ./dag-bench-test-script --network test --action generate-new-address
+     ./bench --network test --action generate-new-address
 
     2.start a node with modify some config up to machine config
 
@@ -39,17 +39,17 @@
     
     git clone git@github.com:jamesvan2019/Nox-DAG-test.git
     
-    cd Nox-DAG-test
+    cd Nox-DAG-test/bench
     go build
     
 ## Run
     create new address 
     
-    ./dag-bench-test-script --network test  --action generate-new-address
+    ./bench --network test  --action generate-new-address
     
     create 999 transactions (the height is the coinbase reward to your address which you can cost)
     
-    ./dag-bench-test-script --faddress=(your address which has much money) --privkey=xxxxxx -s (your node rpc server) -u (your node rpc user) -P (your node rpc pass) --addressfile=/tmp/address.csv --txfile=/tmp/tx.csv --notls --network=$network --height=1
+    ./bench --faddress=(your address which has much money) --privkey=xxxxxx -s (your node rpc server) -u (your node rpc user) -P (your node rpc pass) --addressfile=/tmp/address.csv --txfile=/tmp/tx.csv --notls --network=$network --height=1
     
     above command you can create 999 addresses in /tmp/address.csv1
     
