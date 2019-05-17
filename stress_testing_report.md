@@ -97,7 +97,7 @@ Number of active Threads:
 CPU and Memory of Full node(miner connected) :
 ![cpuMem](./images/cpuMem.jpg)
 
-According to the steps described above, three tests, taking the average of ten results, 
+According to the steps described above, three tests, taking the average of three results, 
 the final results are as follows:
 
 num of TXs | send rate | success % | num of blocks | duration | TPS 
