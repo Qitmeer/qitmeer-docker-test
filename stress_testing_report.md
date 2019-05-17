@@ -1,4 +1,4 @@
-# <font color=Chocolate size=6>Stress Testing scheme of the Nox-DAG Network</font>
+# <font color=Chocolate size=6>Stress Testing Report</font>
 
 ## Test Environment
 
