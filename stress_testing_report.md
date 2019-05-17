@@ -17,7 +17,7 @@ Software Configurations:
 Full node Configurations:
 1. Memory Pool size: 1000 tx
 2. Block Size: 4 MB
-3. Block Reward: 50 token
+3. Block Reward: 25 token
 4. Block Time: 2 minute
 
 #### Test Client
