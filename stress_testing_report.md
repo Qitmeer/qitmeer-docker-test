@@ -46,7 +46,7 @@ How to quickly run a miner, see [here.](https://github.com/HalalChain/hlc-miner/
 
 ## Test Step
 - Configure the test environment
-- Create accounts with addresses and private keys
+- Create accounts(addresses and private keys)
 - Start Qitmeer-DAG nodes
 Script: To be added
 - Configurate miner<br>
