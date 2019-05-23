@@ -12,9 +12,8 @@ import (
 	"path/filepath"
 	"strings"
 	"time"
-	"qitmeer/params"
 	"log"
-	"hlc-miner/common/go-flags"
+	"Nox-DAG-test/script/tool/go-flags"
 )
 
 const (
@@ -30,7 +29,6 @@ var (
 	defaultRPCServer      = "127.0.0.1"
 	defaultRPCCertFile    = filepath.Join(noxHomeDir, "rpc.cert")
 	defaultLogDir         = filepath.Join(minerHomeDir, defaultLogDirname)
-	ChainParams  *params.Params
 )
 
 type Config struct {

@@ -1,17 +1,18 @@
 package tool
 
 import (
-	"qitmeer/crypto/seed"
 	"fmt"
 	"log"
-	"qitmeer/crypto/bip32"
 	"encoding/hex"
-	"qitmeer/crypto/ecc"
-	"qitmeer/common/hash"
-	"qitmeer/common/encode/base58"
-	"qitmeer/params"
-	"qitmeer/core/address"
+	"Nox-DAG-test/script/tool/seed"
+	"Nox-DAG-test/script/tool/bip32"
+	"Nox-DAG-test/script/tool/ecc"
+	"Nox-DAG-test/script/tool/address"
+	"Nox-DAG-test/script/tool/hash"
+	"Nox-DAG-test/script/tool/base58"
+	"Nox-DAG-test/script/tool/params"
 )
+
 //create address
 func CreateNoxAddr(network string) (priKey string ,base58Addr string ){
 	seed1 := NewEntropy(32)
