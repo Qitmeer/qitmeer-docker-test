@@ -73,6 +73,10 @@ func GetTxID(cfg *tool.Config,rpc *tool.RpcClient){
 	}
 	var res map[string]interface{}
 	json.Unmarshal(body,&res)
+	if res == nil{
+		log.Fatalln("rpc error,please check!",cfg.Height)
+		os.Exit(0)
+	}
 	result := res["result"].(map[string]interface{})
 	transactions := result["transactions"].([]interface{})
 	if len(transactions)<1{

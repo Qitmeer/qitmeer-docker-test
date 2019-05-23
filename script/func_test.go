@@ -6,8 +6,7 @@ import (
 	"log"
 	"encoding/json"
 	"fmt"
-	"qitmeer/core/types"
-	edwards "qitmeer/crypto/ecc/ed25519"
+	"Nox-DAG-test/script/tool/types"
 )
 
 func TestDecode(t *testing.T)  {
@@ -45,9 +44,3 @@ func TestMax(t *testing.T){
 }
 
 
-
-func TestEd25519(t *testing.T){
-	ed255 := edwards.Edwards()
-	ed255.InitParam25519()
-	//edwards.
-}
