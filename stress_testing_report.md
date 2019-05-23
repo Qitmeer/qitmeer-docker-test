@@ -51,7 +51,7 @@ How to quickly run a miner, see [here.](https://github.com/HalalChain/hlc-miner/
 - Configurate miner<br>
 Configure the address of the sending transaction account to the mining address:<br> 
 ```asciidoc
-./hlc-miner -s 47.93.20.102:1236 -u admin -P 123 --symbol HLC --notls -i 24 -W 256 --mineraddress TmN4SADy42FKmN8ARKieX9iHh9icptdgYNn --testnet<br>
+./hlc-miner -s 47.93.20.102:1236 -u admin -P 123 --symbol HLC --notls -i 24 -W 256 --mineraddress TmN4SADy42FKmN8ARKieX9iHh9icptdgYNn --testnet
 ```
 The following parameters can be modified depending on your situation:
     
@@ -62,7 +62,7 @@ The following parameters can be modified depending on your situation:
 - Mining to the send transaction account: 120 blocks, 3000 HLC
 - Create 30,000 signed RAW transactions through scripts and export them to CSV files
 
-[Create sign raw transaction hash script](https://github.com/jamesvan2019/Nox-DAG-test/blob/master/stress_testing_batch_create_transactions_script.md)
+[Create sign raw transaction hash script](https://github.com/HalalChain/Nox-DAG-test/blob/master/stress_testing_batch_create_transactions_script.md)
 - Configure the test client(JMeter), Key configuration parameters:
 
       Number of Threads (users): 500
