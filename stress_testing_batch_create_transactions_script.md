@@ -37,7 +37,7 @@
     
     git clone git@github.com:HalalChain/qitmeer.git
     
-    git clone git@github.com:jamesvan2019/Nox-DAG-test.git
+    git clone git@github.com:HalalChain/Nox-DAG-test.git
     
     cd Nox-DAG-test/script
     go build

@@ -168,7 +168,6 @@ func SendMoneyAccounts(cfg *tool.Config,rpc *tool.RpcClient){
 		if index < 998{
 			addresses = []string{csvContent[index+1][1]}
 		} else{
-			//最后一个
 			addresses = []string{csvContent[0][1]}
 		}
 		signRawhash := SendTransaction(cfg,0.02,pk,TxID,fromAddr,addresses,rpc,0.01,uint32(index))
