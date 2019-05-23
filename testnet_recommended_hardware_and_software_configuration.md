@@ -6,7 +6,8 @@
 Each node is an VPS, total six full nodes.
 
 Hardware Configurations:
-1. CPU: Physical Processor:Intel Xeon(Skylake) Platinum 8163: <br>
+1. CPU: <br>
+        Physical Processor: Intel Xeon(Skylake) Platinum 8163: <br>
         Clock Speed: 2.5 GHz<br>
         vCPU: 8
 2. Memory: 16 GB
