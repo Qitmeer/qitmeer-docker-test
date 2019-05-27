@@ -38,7 +38,10 @@ docker run --rm halalchain/nox-dag cli [commands]
 docker run --rm halalchain/nox-dag cli block
 ```
 ---
-
+* If you want to send a signed transaction, you can do this:
+```
+docker run --rm halalchain/nox-dag cli sendRawTx [hex]
+```
 ## NX
 * If you want to do something, such as calculate hash, generate HD key and transaction signature etc. You can use `nx` command to do it. 
 ```
@@ -48,6 +51,7 @@ docker run --rm halalchain/nox-dag nx [commands]
 ---
 
 ## About configuration
+### nox
 | Field | Explain |
 | --- | --- |
 | miningaddr | Miner account address |
@@ -67,11 +71,15 @@ docker run --rm halalchain/nox-dag nx [commands]
 
 * For example:
 ```
-docker run -it -p 18130:18130 -p 18131:18131 halalchain/nox-dag --miningaddr=[Your] --addpeer=47.103.194.115:18130
+docker run -it -p 18130:18130 -p 18131:18131 halalchain/nox-dag --addpeer=47.103.194.115:18130
 ```
 
-
+* If you have multiple nodes to add, you can configure them repeatedly.
+ ```
+docker run -it -p 18130:18130 -p 18131:18131 halalchain/nox-dag --addpeer=x.x.x.x:x --addpeer=x.x.x.x:x
+``` 
 ---
+
 
 ## Remarks
 ### Install docker on ubuntu:
