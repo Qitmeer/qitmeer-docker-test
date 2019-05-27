@@ -54,7 +54,10 @@ $ cli [commands]
 $ cli block
 ```
 ---
-
+* If you want to send a signed transaction, you can do this:
+```
+docker run --rm halalchain/nox-dag cli sendRawTx [hex]
+```
 ## NX
 NX is a toolset to assistant client-side operations.
 * make alias
@@ -219,6 +222,7 @@ $  cli sendRawTx $(cat tx.txt)
 ---
 
 ## About configuration
+### nox
 | Field | Explain |
 | --- | --- |
 | miningaddr | Miner account address |
@@ -230,11 +234,25 @@ $  cli sendRawTx $(cat tx.txt)
 | Server Name | IP Address | Describe |
 | --- | --- | ---|
 | Dagfans | 47.103.194.115:18130 | Shanghai |
-| Pool | 42.51.64.58:38130 | Shanghai |
+
+| Pool | 47.93.20.102:18130 | Shanghai |
 | Google Cloud | 35.246.127.0:18130 | UK |
 | ??? | ??? | Xi'an |
 
+<font color=Gray size=3>If you haven't turned on DNS Seed service, you can use "addpeer" to add the above servers manually as your peers.</font>
+
+
+* For example:
+```
+docker run -it -p 18130:18130 -p 18131:18131 halalchain/nox-dag --addpeer=47.103.194.115:18130
+```
+
+* If you have multiple nodes to add, you can configure them repeatedly.
+ ```
+docker run -it -p 18130:18130 -p 18131:18131 halalchain/nox-dag --addpeer=x.x.x.x:x --addpeer=x.x.x.x:x
+``` 
 ---
+
 
 ## Remarks
 NOTE: make sure the server has at least 2GB memory
