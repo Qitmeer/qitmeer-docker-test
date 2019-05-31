@@ -65,7 +65,7 @@ func main()  {
 }
 
 func GetTxID(cfg *tool.Config,rpc *tool.RpcClient){
-	body := rpc.RpcResult("getBlockByHeight",[]interface{}{cfg.Height,true})
+	body := rpc.RpcResult("getBlockByOrder",[]interface{}{cfg.Height,true})
 	//log.Println(string(body))
 	if strings.Contains(string(body),"error"){
 		log.Fatalln("not exist height block!",cfg.Height)

@@ -5,7 +5,7 @@
 ### Enviroment
 - Windows 10
   
-  - install opencl sdk ,recommend cuda see [here](https://developer.nvidia.com/cuda-downloads) 
+  - install opencl sdk ,recommend cuda v10.1 see [here](https://developer.nvidia.com/cuda-downloads) 
   
 - Ubuntu 19 
 
