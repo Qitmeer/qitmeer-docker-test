@@ -62,7 +62,7 @@ $ cd (miner directory)
 $ ./hlc-miner -o stratum+tcp://127.0.0.1:3177 -m RmN4SADy42FKmN8ARKieX9iHh9icptdgYNn --symbol HLC --notls -i 24 -W 256
 ``` 
 
-### Param Description 
+### (3) Param Description 
           
 - `--dag` the node is dag node
 - `-s` the node rpc listen address
