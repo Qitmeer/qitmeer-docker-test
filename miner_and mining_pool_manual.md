@@ -156,8 +156,20 @@ npm run api api.js
 pool support stratum protocol,so your minning program should config protocol.
 
 
-```
+```sh
 # exmaple
+# refer to hlc miner README.md
+miner.exe -o stratum+tcp://server_ip:3177 -m your_wallet_address.your_machine_id
 
-miner.exe -o stratum+tcp://server_ip:3177 
 ```
+
+## monitoring and earnings check
+
+open pool web site , e.g. (http://your_server:80),and search your address
+
+![miner addr search](./images/pol.search.png)
+
+
+check your machine status and hashrate per 30 minutes 
+
+![miner status check](./images/pol.hash.png)
