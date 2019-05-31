@@ -69,9 +69,9 @@ the pool system contain 6 precedures:
 6. api procedure， to serve json data for pool index page
 
 
-## server open socket port
+## server firewall open port
 
-pool port (tcp),to accept mining machine connect (e.g. 3177 )
+pool port (tcp),to accept mining machine connect (e.g. 3177,80)
 
 ## run pool
 
