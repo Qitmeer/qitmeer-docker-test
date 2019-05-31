@@ -7,6 +7,25 @@
 
 # 2.Mining pool
 
+## pool structure diagram
+
+![pol](./images/pol.png)
+
+the pool system contain 6 precedures:
+
+1. pool procedure, to accept miner connect and find blocks
+
+2. round procedure, to calculate miners share and credit
+
+3. payment procedure, to make pay list for pay
+
+4. pay procedure, to send coin to miner
+
+5. admin procedure, to manage pay list
+
+6. api procedure， to serve json data for pool index page
+
+
 ## system Requirements
 
 os: linux （e.g. ubunutu 16.04>,centos 6>）
@@ -52,21 +71,7 @@ npm install --save
 
 ## config pool
 
-you should setup at least 4 config files (path to conf/ ) to run pool,round,payment,pay,admin and api.
-
-the pool system contain 6 precedures:
-
-1. pool procedure, to accept miner connect and find blocks
-
-2. round procedure, to calculate miners share and credit
-
-3. payment procedure, to make pay list for pay
-
-4. pay procedure, to send coin to miner
-
-5. admin procedure, to manage pay list
-
-6. api procedure， to serve json data for pool index page
+you should setup at least 4 config files (path to conf/ ) to run pool,round,payment,pay,admin and api. Please refer to example config file（conf/xx.js).
 
 
 ## server firewall open port
