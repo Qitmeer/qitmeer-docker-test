@@ -97,5 +97,5 @@ pool support stratum protocol,so your minning program should config protocol.
 ```
 # exmaple
 
-miner.exe -o stratum+tcp://your_ip:3177 
+miner.exe -o stratum+tcp://server_ip:3177 
 ```
