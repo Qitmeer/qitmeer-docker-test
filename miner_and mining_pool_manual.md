@@ -165,7 +165,7 @@ miner.exe -o stratum+tcp://server_ip:3177 -m your_wallet_address.your_machine_id
 
 ## monitoring and earnings check
 
-open pool web site , e.g. (http://your_server:80),and search your address
+open pool web site (e.g. http://your_server:80),and search your address
 
 ![miner addr search](./images/pol.search.png)
 
