@@ -2,7 +2,7 @@
 
 ## 1.Miner
 
-### Enviroment
+### (1) Enviroment
 - Windows 10
   
   - install opencl sdk ,recommend cuda v10.1 see [here](https://developer.nvidia.com/cuda-downloads) 
@@ -16,20 +16,34 @@ $ sudo apt-get install beignet-dev nvidia-cuda-dev nvidia-cuda-toolkit
 ```        
  
     
-### Run
+### (2) Run
 
-- Download the release [here](https://github.com/jamesvan2019/Nox-DAG-test/releases)
+- Download miner from the release [here](https://github.com/jamesvan2019/Nox-DAG-test/releases)
 
 - Unzip the file
 
-- Run with config file
+- Run with config file `halachainminer.conf`
 
-    - rename halalchainminer.conf.example halalchainminer.conf
-![dir](images/dir.png)
-    - modify the config params
-![dir](images/config.png)   
+    - modify the config params 
+        
+        - `mineraddress`=TmRvuqtjb3DsYQJTcEZQZD5qfJWcMggdEYP
+        - `rpcserver`=127.0.0.1:1234
+        - `rpcuser`=test
+        - `rpcpass`=test
+        
+        ===========pool config ==========
+        
+         - `pool`=stratum+tcp://127.0.0.1:3177
+         - `pooluser`=RmN4SADy42FKmN8ARKieX9iHh9icptdgYNn.1 (address.worknum)
+         - `poolpass`=
+    
+    - open `cmd` tools
+    
+    - cd miner directory
+    
 ```bash
 # run
+$ cd (miner directory)
 $ ./hlc-miner
 ```
 ![dir](images/miner.png)   
@@ -37,12 +51,14 @@ $ ./hlc-miner
     
 ```bash
 #run 
+$ cd (miner directory)
 $ ./hlc-miner -s 127.0.0.1:1234 -u test -P test --symbol HLC --notls -i 24 -W 256 --mineraddress RmN4SADy42FKmN8ARKieX9iHh9icptdgYNn 
 ```
 - Run with pool command line
 
 ```bash
 #run 
+$ cd (miner directory)
 $ ./hlc-miner -o stratum+tcp://127.0.0.1:3177 -m RmN4SADy42FKmN8ARKieX9iHh9icptdgYNn --symbol HLC --notls -i 24 -W 256
 ``` 
 
@@ -58,8 +74,6 @@ $ ./hlc-miner -o stratum+tcp://127.0.0.1:3177 -m RmN4SADy42FKmN8ARKieX9iHh9icptd
 - `--mineraddress` the miner address
 - `-o` the pool address
 - `-m` the pool user account address
-
-        
 
 
 ## 2.Mining pool
