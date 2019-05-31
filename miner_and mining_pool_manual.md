@@ -7,36 +7,42 @@
   
   - install opencl sdk ,recommend cuda see [here](https://developer.nvidia.com/cuda-downloads) 
   
-- Ubuntu 16.04
+- Ubuntu 19 
+
+   - need display card
     
-    ```bash
-    $ sudo apt-get install beignet-dev nvidia-cuda-dev nvidia-cuda-toolkit 
-    ```        
-    
+```bash
+$ sudo apt-get install beignet-dev nvidia-cuda-dev nvidia-cuda-toolkit 
+```        
+ 
     
 ### Run
 
-- Run with config file
-    
-    - Download the release [here](https://github.com/jamesvan2019/Nox-DAG-test/releases)
+- Download the release [here](https://github.com/jamesvan2019/Nox-DAG-test/releases)
 
-    - unzip the file
+- Unzip the file
+
+- Run with config file
 
     - rename halalchainminer.conf.example halalchainminer.conf
-
-    - run miner
+![dir](images/dir.png)
+    - modify the config params
+![dir](images/config.png)   
 ```bash
+# run
 $ ./hlc-miner
 ```
-
+![dir](images/miner.png)   
 - Run with solo command line
     
 ```bash
+#run 
 $ ./hlc-miner -s 127.0.0.1:1234 -u test -P test --symbol HLC --notls -i 24 -W 256 --mineraddress RmN4SADy42FKmN8ARKieX9iHh9icptdgYNn 
 ```
 - Run with pool command line
 
 ```bash
+#run 
 $ ./hlc-miner -o stratum+tcp://127.0.0.1:3177 -m RmN4SADy42FKmN8ARKieX9iHh9icptdgYNn --symbol HLC --notls -i 24 -W 256
 ``` 
 
