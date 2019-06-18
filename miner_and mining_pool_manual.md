@@ -99,46 +99,32 @@ the pool system contain 6 precedures:
 
 ## system Requirements
 
-os: linux （e.g. ubunutu 16.04>,centos 6>）
+os: linux （e.g. ubunutu 16.04>,centos 6>）and docker env.
 
-node.js enviroment (version >= 10)
-
-redis / mysql / nginx , recommend installing from docker
+redis , mysql , nginx , recommend installing from docker
 
 hlc node (at least 1 node referring to https://github.com/HalalChain/Nox-DAG-test/blob/master/README.md)
 
-
+hlc pool (docker HalalChain/pool)
 
 ## install
 
-### 1. download pool code
 
-https://github.com/HalalChain/hlc-pool/archive/master.zip
+### install system base require parts
 
-### 2. install node enviroment
+docker pull redis
 
-download binary from https://nodejs.org/zh-cn/download/
+docker pull mariadb 
 
-install referring to https://github.com/nodejs/help/wiki/Installation
-
-### 3. mysql init
-
-load pol.sql( utils/pol.sql ) file to mysql
+referring to docker's document
 
 ### 4. install pool
 
-cd pool code folder and install node modules
+1. register a docker acount
 
-```bash
-# install c++ dev tools
-# ubuntu 
-apt-get install build-essential
-# centos 
-yum groupinstall "Development Tools" 
+2. send your docker account to hlc Manager,and we will mod your account download power.
 
-# install node modules
-npm install --save
-```
+3. docker pull HalalChain/pool
 
 ## config pool
 
@@ -153,16 +139,16 @@ pool port (tcp),to accept mining machine connect (e.g. 3177,80)
 
 ```bash
 # pool 
-npm run pool pool.js
+docker run -i -t -d -p 3177:3177 HalalChain/pool pool pool.js
 
 # pay
-npm run round pay.js
-npm run payment pay.js
-npm run pay pay.js
-npm run admin admin.js
+docker run -i -t -d HalalChain/pool round pay.js
+docker run -i -t -d HalalChain/pool payment pay.js
+docker run -i -t -d HalalChain/pool pay pay.js
+docker run -i -t -d HalalChain/pool admin admin.js
 
 # web api
-npm run api api.js
+docker run -i -t -d HalalChain/pool api api.js
 ```
 
 ## minning machine connection
