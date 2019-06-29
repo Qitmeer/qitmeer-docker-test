@@ -55,7 +55,7 @@ docker pull halalchain/nox-dag
 * <font color=Chocolate size=3>Finally, we can run this every time we start it up.</font>
 
 ```
-docker run -it -p 18130:18130 -p 18131:18131 halalchain/nox-dag --miningaddr=[Your mining address] --addpeer=[peer1 IP:PORT] [--addpeer=[peer2 IP:PORT]]
+docker run -it -p 18130:18130 -p 18131:18131 halalchain/nox-dag --miningaddr=[Your mining address] --addpeer=[peer1 IP:PORT] [--addpeer=[peer2 IP:PORT]] --httpmodules=miner --httpmodules=|nox|
 ```
 
 ---
@@ -113,8 +113,7 @@ entropy->private key->public key->address
 # STATEMENT 1: this command generates the private key which will be used to sign the transaction later
 $ nx ec-new $(nx entropy) > miner_key.txt
 
-$ nx ec-to-addr $(nx ec-to-public $(cat miner_key.txt))
-TmfaGwUbZiCeqKqrXNBaK5wEUcwcqArqNaW
+$ nx ec-to-addr $(nx ec-to-public $(cat miner_key.txt)) > miner_address.txt
 
 
 ```
@@ -124,7 +123,7 @@ TmfaGwUbZiCeqKqrXNBaK5wEUcwcqArqNaW
 We  add peers manually by specifying addpeer, we recommend adding at least two peers.
 
 ```shell
-docker run -it -p 18130:18130 -p 18131:18131 halalchain/nox-dag --miningaddr=TmfaGwUbZiCeqKqrXNBaK5wEUcwcqArqNaW --addpeer=47.103.194.115:18130 --addpeer=42.51.64.58:38130
+docker run -it -p 18130:18130 -p 18131:18131 halalchain/nox-dag --miningaddr=$(cat miner_address.txt) --addpeer=47.103.194.115:18130 --httpmodules=miner --httpmodules=\|nox\|
 ```
 
 ## mining
@@ -179,7 +178,8 @@ from the block info, we could infer this only transaction cd1fb199ad3cc58d696cdd
  
 inspect the tx
 ```shell
-$ cli tx cd1fb199ad3cc58d696cdd1499bc97c3fd9aac38a705db0d9bdd94d09ce1ad3e
+$ echo cd1fb199ad3cc58d696cdd1499bc97c3fd9aac38a705db0d9bdd94d09ce1ad3e > tx_id.txt
+$ cli tx $(cat tx_id.txt)
 {
   "hex": "01000000010000000000000000000000000000000000000000000000000000000000000000ffffffffffffffff0380b2e60e000000000000000000000000000e6a0c2c010000f646336d5a0c843f80461c86000000001976a914b65a5d4ce219772417459b40af009f0e39646a4b88ac00000000000000000100f902950000000000000000ffffffff0700002f6e6f782f",
   "hexnowit": "01000100010000000000000000000000000000000000000000000000000000000000000000ffffffffffffffff0380b2e60e000000000000000000000000000e6a0c2c010000f646336d5a0c843f80461c86000000001976a914b65a5d4ce219772417459b40af009f0e39646a4b88ac0000000000000000",
@@ -232,18 +232,21 @@ $ cli tx cd1fb199ad3cc58d696cdd1499bc97c3fd9aac38a705db0d9bdd94d09ce1ad3e
 }
 ```
 
-generate receiving address
+generate recipient address
 ```shell
-$ nx ec-new $(nx entropy) > receiver_key.txt
-$ nx ec-to-addr $(nx ec-to-public $(cat receiver_key.txt))
-TmfaGwUbZiCeqKqrXNBaK5wEUcwcqArqNaW
+$ nx ec-new $(nx entropy) > recipient_key.txt
+$ nx ec-to-addr $(nx ec-to-public $(cat recipient_key.txt)) > recipient_address.txt 
 ```
 
 ```shell
-$ nx tx-encode -i cd1fb199ad3cc58d696cdd1499bc97c3fd9aac38a705db0d9bdd94d09ce1ad3e:2 -o TmfJD6F4n4iWLvgtekGCmBoR2MakzSSHm5t:2.5 -o TmfaGwUbZiCeqKqrXNBaK5wEUcwcqArqNaW:20 > tx.txt
+# 0.1 coin for the mining fee
+$ nx tx-encode -i $(cat tx_id.txt):2 -o $(cat recipient_address.txt):2.4 -o $(cat miner_address.txt):20 > tx.txt
 # the key is generated in STATEMENT 1
 $ nx tx-sign -k $(cat miner_key.txt) $(cat tx.txt)> tx.txt
-
+# mine enough blocks to make the the block mature
+# this operation would be computational heavy and take long time,
+# so it is strongly recommended that use GPU miner
+$ cli generate 16
 $  cli sendRawTx $(cat tx.txt)
 ```
 
@@ -257,15 +260,12 @@ $  cli sendRawTx $(cat tx.txt)
 | debuglevel | Logging level {trace, debug, info, warn, error, critical} |
 | addpeer | Add a peer to connect with at startup |
 | connect | Connect only to the specified peers at startup |
+| httpmodules |  enable services. set to 'miner' will activate mining service |
 
 ## Full nodes
 | Server Name | IP Address | Describe |
 | --- | --- | ---|
-| Dagfans | 47.103.194.115:18130 | Shanghai |
-
-| Pool | 47.93.20.102:18130 | Shanghai |
-| Google Cloud | 35.246.127.0:18130 | UK |
-| ??? | ??? | Xi'an |
+| CN1 | 47.103.194.115:18130 | Alibaba |
 
 <font color=Gray size=3>If you haven't turned on DNS Seed service, you can use "addpeer" to add the above servers manually as your peers.</font>
 
