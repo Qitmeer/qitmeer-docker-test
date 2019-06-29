@@ -284,7 +284,7 @@ docker run -it -p 18130:18130 -p 18131:18131 halalchain/nox-dag --addpeer=x.x.x.
 
 * Some RPC method interfaces are private, if you want to open all RPC interface of the full node, you have to do this:
 ```
-docker run -it -p 18130:18130 -p 18131:18131 halalchain/nox-dag --httpmodules=|nox| --httpmodules=miner
+docker run -it -p 18130:18130 -p 18131:18131 halalchain/nox-dag --httpmodules=nox --httpmodules=miner
 ```
 
 ## Remarks
