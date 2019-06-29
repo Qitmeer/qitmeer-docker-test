@@ -257,6 +257,7 @@ $  cli sendRawTx $(cat tx.txt)
 | debuglevel | Logging level {trace, debug, info, warn, error, critical} |
 | addpeer | Add a peer to connect with at startup |
 | connect | Connect only to the specified peers at startup |
+| httpmodules | It is a list of API modules to expose via the HTTP RPC interface. (Current valid values:nox,miner)|
 
 ## Full nodes
 | Server Name | IP Address | Describe |
@@ -281,6 +282,10 @@ docker run -it -p 18130:18130 -p 18131:18131 halalchain/nox-dag --addpeer=x.x.x.
 ``` 
 ---
 
+* Some RPC method interfaces are private, if you want to open all RPC interface of the full node, you have to do this:
+```
+docker run -it -p 18130:18130 -p 18131:18131 halalchain/nox-dag --httpmodules=|nox| --httpmodules=miner
+```
 
 ## Remarks
 NOTE: make sure the server has at least 2GB memory
