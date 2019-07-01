@@ -86,21 +86,21 @@ $ cli block
 ```
 docker run --rm halalchain/qitmeer cli sendRawTx [hex]
 ```
-## NX
-NX is a toolset to assistant client-side operations.
+## QX
+QX is a toolset to assistant client-side operations.
 * make alias
 ```shell
-$ alias nx="docker run --rm halalchain/qitmeer nx"
+$ alias qx="docker run --rm halalchain/qx"
 ```
 
 * list all commands
 ```shell
-$ nx
+$ qx
 ```
 
-* If you want to do something, such as calculate hash, generate HD key and transaction signature etc. You can use `nx` command to do it. 
+* If you want to do something, such as calculate hash, generate HD key and transaction signature etc. You can use `qx` command to do it. 
 ```
-$ nx [commands]
+$ qx [commands]
 ```
 
 # Experiment
@@ -111,9 +111,9 @@ entropy->private key->public key->address
 
 ```shell
 # STATEMENT 1: this command generates the private key which will be used to sign the transaction later
-$ nx ec-new $(nx entropy) > miner_key.txt
+$ qx ec-new $(qx entropy) > miner_key.txt
 
-$ nx ec-to-addr $(nx ec-to-public $(cat miner_key.txt)) > miner_address.txt
+$ qx ec-to-addr $(qx ec-to-public $(cat miner_key.txt)) > miner_address.txt
 
 
 ```
@@ -129,7 +129,7 @@ docker run -it -p 18130:18130 -p 18131:18131 halalchain/qitmeer --miningaddr=$(c
 ## mining
 before we send transactions, we need to get some rewards by mining.
 
-Note: this command is executed by CPU, so it takes more patience to get the result.
+Note: this command is executed by CPU, so it takes more patience to get the result. Because this command is private RPC interface, so you must enable `httpmodules=miner` for qitmeer.
 
 ```shell
 $ cli generate 1
@@ -234,15 +234,15 @@ $ cli tx $(cat tx_id.txt)
 
 generate recipient address
 ```shell
-$ nx ec-new $(nx entropy) > recipient_key.txt
-$ nx ec-to-addr $(nx ec-to-public $(cat recipient_key.txt)) > recipient_address.txt 
+$ qx ec-new $(qx entropy) > recipient_key.txt
+$ qx ec-to-addr $(qx ec-to-public $(cat recipient_key.txt)) > recipient_address.txt 
 ```
 
 ```shell
 # 0.1 coin for the mining fee
-$ nx tx-encode -i $(cat tx_id.txt):2 -o $(cat recipient_address.txt):2.4 -o $(cat miner_address.txt):20 > tx.txt
+$ qx tx-encode -i $(cat tx_id.txt):2 -o $(cat recipient_address.txt):2.4 -o $(cat miner_address.txt):20 > tx.txt
 # the key is generated in STATEMENT 1
-$ nx tx-sign -k $(cat miner_key.txt) $(cat tx.txt)> tx.txt
+$ qx tx-sign -k $(cat miner_key.txt) $(cat tx.txt)> tx.txt
 # mine enough blocks to make the the block mature
 # this operation would be computational heavy and take long time,
 # so it is strongly recommended that use GPU miner
