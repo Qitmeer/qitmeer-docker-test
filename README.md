@@ -1,12 +1,12 @@
-# <font color=Chocolate size=6>Nox-DAG</font>
+# <font color=Chocolate size=6>Qitmeer-docker</font>
 
 ## Abstract
-Introduce how to quickly establish the Nox-DAG Network
+Introduce how to quickly establish the Qitmeer Network
 
 ---
 
-## What is Nox-DAG?
-Nox-DAG is a DAG network based on Nox project. So it's very powerful, and you can even connect your own mining program to it for mining, or you can connect your wallet application to it for transfer transactions.
+## What is Qitmeer-docker?
+Qitmeer-docker is a DAG network based on Qitmeer project. So it's very powerful, and you can even connect your own mining program to it for mining, or you can connect your wallet application to it for transfer transactions.
 
 ---
 
@@ -50,12 +50,12 @@ Other systems platforms are similar.You can go [docker](https://www.docker.com/g
 #### ***2.Deployment image:***
 * First we need to initialize the image, Of course, when you want the latest image, you can also use the following command.
 ```
-docker pull halalchain/nox-dag
+docker pull halalchain/qitmeer
 ```
 * <font color=Chocolate size=3>Finally, we can run this every time we start it up.</font>
 
 ```
-docker run -it -p 18130:18130 -p 18131:18131 halalchain/nox-dag --miningaddr=[Your mining address] --addpeer=[peer1 IP:PORT] [--addpeer=[peer2 IP:PORT]] --httpmodules=miner --httpmodules=nox
+docker run -it -p 18130:18130 -p 18131:18131 halalchain/qitmeer --miningaddr=[Your mining address] --addpeer=[peer1 IP:PORT] [--addpeer=[peer2 IP:PORT]] --httpmodules=miner --httpmodules=nox
 ```
 
 ---
@@ -65,8 +65,7 @@ CLI is a toolset to interact with server by RPC.
 
 * make alias
 ```shell
-$ alias cli="docker run --rm halalchain/
--dag cli"
+$ alias cli="docker run --rm halalchain/qitmeer cli"
 ```
 
 * list all commands
@@ -85,13 +84,13 @@ $ cli block
 ---
 * If you want to send a signed transaction, you can do this:
 ```
-docker run --rm halalchain/nox-dag cli sendRawTx [hex]
+docker run --rm halalchain/qitmeer cli sendRawTx [hex]
 ```
 ## NX
 NX is a toolset to assistant client-side operations.
 * make alias
 ```shell
-$ alias nx="docker run --rm halalchain/nox-dag nx"
+$ alias nx="docker run --rm halalchain/qitmeer nx"
 ```
 
 * list all commands
@@ -124,7 +123,7 @@ $ nx ec-to-addr $(nx ec-to-public $(cat miner_key.txt)) > miner_address.txt
 We  add peers manually by specifying addpeer, we recommend adding at least two peers.
 
 ```shell
-docker run -it -p 18130:18130 -p 18131:18131 halalchain/nox-dag --miningaddr=$(cat miner_address.txt) --addpeer=47.103.194.115:18130 --httpmodules=miner --httpmodules=nox
+docker run -it -p 18130:18130 -p 18131:18131 halalchain/qitmeer --miningaddr=$(cat miner_address.txt) --addpeer=47.103.194.115:18130 --httpmodules=miner --httpmodules=nox
 ```
 
 ## mining
@@ -254,7 +253,7 @@ $  cli sendRawTx $(cat tx.txt)
 ---
 
 ## About configuration
-### nox
+### qitmeer
 | Field | Explain |
 | --- | --- |
 | miningaddr | Miner account address |
@@ -274,18 +273,18 @@ $  cli sendRawTx $(cat tx.txt)
 
 * For example:
 ```
-docker run -it -p 18130:18130 -p 18131:18131 halalchain/nox-dag --addpeer=47.103.194.115:18130
+docker run -it -p 18130:18130 -p 18131:18131 halalchain/qitmeer --addpeer=47.103.194.115:18130
 ```
 
 * If you have multiple nodes to add, you can configure them repeatedly.
  ```
-docker run -it -p 18130:18130 -p 18131:18131 halalchain/nox-dag --addpeer=x.x.x.x:x --addpeer=x.x.x.x:x
+docker run -it -p 18130:18130 -p 18131:18131 halalchain/qitmeer --addpeer=x.x.x.x:x --addpeer=x.x.x.x:x
 ``` 
 ---
 
 * Some RPC method interfaces are private, if you want to open all RPC interface of the full node, you have to do this:
 ```
-docker run -it -p 18130:18130 -p 18131:18131 halalchain/nox-dag --httpmodules=nox --httpmodules=miner
+docker run -it -p 18130:18130 -p 18131:18131 halalchain/qitmeer --httpmodules=nox --httpmodules=miner
 ```
 
 ## Remarks
