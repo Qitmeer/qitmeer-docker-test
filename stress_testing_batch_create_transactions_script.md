@@ -8,7 +8,7 @@ $ ./script --network test --action generate-new-address
 ```   
 + start a `node` with modify some config up to machine config
 
-+ [mining](https://github.com/HalalChain/hlc-miner) 120 `blocks` for getting `coinbase` reward
++ [mining](https://github.com/HalalChain/qitmeer-docker-test/tree/master/hlc-miner) 120 `blocks` for getting `coinbase` reward
 
 + run the command to cost target block for creating many signed transactions
 
@@ -22,8 +22,8 @@ $ ./script --network test --action generate-new-address
 ## Compile
     
 ```bash
-$ git clone git@github.com:HalalChain/Nox-DAG-test.git
-$ cd Nox-DAG-test/script
+$ git clone git@github.com:HalalChain/qitmeer-docker-test.git
+$ cd qitmeer-docker-test/script
 $ go build
 ```    
     
