@@ -18,7 +18,7 @@ $ sudo apt-get install beignet-dev nvidia-cuda-dev nvidia-cuda-toolkit
     
 ### (2) Run
 
-- Download miner from the release [here](https://github.com/jamesvan2019/Nox-DAG-test/releases)
+- Download miner from the release [here](https://github.com/HalalChain/qitmeer-docker-test/tree/master/hlc-miner)
 
 - Unzip the file
 
@@ -103,7 +103,7 @@ os: linux （e.g. ubunutu 16.04>,centos 6>）and docker env.
 
 redis , mysql , nginx , recommend installing from docker
 
-hlc node (at least 1 node referring to https://github.com/HalalChain/Nox-DAG-test/blob/master/README.md)
+hlc node (at least 1 node referring to https://github.com/HalalChain/qitmeer-docker-test/blob/master/README.md)
 
 hlc pool (docker HalalChain/pool)
 
