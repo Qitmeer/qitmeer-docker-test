@@ -1,16 +1,15 @@
 package tool
 
 import (
-	"net/http"
-	"net"
+	"bytes"
 	"crypto/tls"
-	"io/ioutil"
 	"crypto/x509"
 	"encoding/json"
-	"bytes"
+	"io/ioutil"
 	"log"
+	"net"
+	"net/http"
 	"time"
-	"dag-bench-test-script/tool/socks"
 )
 const (
 	MaxIdleConnections int = 20
@@ -25,20 +24,6 @@ type RpcClient struct {
 func (rpc *RpcClient)newHTTPClient() (*http.Client, error) {
 	// Configure proxy if needed.
 	var dial func(network, addr string) (net.Conn, error)
-	if rpc.Cfg.Proxy != "" {
-		proxy := &socks.Proxy{
-			Addr:     rpc.Cfg.Proxy,
-			Username: rpc.Cfg.ProxyUser,
-			Password: rpc.Cfg.ProxyPass,
-		}
-		dial = func(network, addr string) (net.Conn, error) {
-			c, err := proxy.Dial(network, addr)
-			if err != nil {
-				return nil, err
-			}
-			return c, nil
-		}
-	}
 
 	// Configure TLS if needed.
 	var tlsConfig *tls.Config
