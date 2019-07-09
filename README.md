@@ -1,5 +1,7 @@
 # <font color=Chocolate size=6>Qitmeer-docker</font>
 
+[![Build Status](https://travis-ci.com/HalalChain/qitmeer-docker-test.svg?branch=master)](https://travis-ci.com/HalalChain/qitmeer-docker-test)
+
 ## Abstract
 Introduce how to quickly establish the Qitmeer Network
 
