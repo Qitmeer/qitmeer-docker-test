@@ -35,9 +35,8 @@ func main()  {
 		pk,addr := tool.CreateNoxAddr(cfg.Network)
 		log.Println("【HLC private key】",pk)
 		log.Println("【HLC base58 address】",addr)
-		break
 	case "batch-generate-address-signed-transactions":
-
+		fallthrough
 	default:
 		if cfg.FromAddress == ""{
 			log.Fatalln("please set the FromAddress ! --faddress")
@@ -161,7 +160,7 @@ func SendMoneyAccounts(cfg *tool.Config,rpc *tool.RpcClient){
 	csvContent := tool.ReadCsv(cfg.AddressFile,0,999)
 	csvContent1 := make([][]string,0)
 	keys := make([]int,0)
-	for k,_:=range csvContent{
+	for k:=range csvContent{
 		keys = append(keys,k)
 	}
 	sort.Ints(keys)

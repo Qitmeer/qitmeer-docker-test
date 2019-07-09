@@ -1,12 +1,12 @@
 package main
 
 import (
+	"github.com/HalalChain/qitmeer-lib/core/types"
+	"qitmeer-docker-test/script/tool"
 	"testing"
-	"dag-bench-test-script/tool"
 	"log"
 	"encoding/json"
 	"fmt"
-	"Nox-DAG-test/script/tool/types"
 )
 
 func TestDecode(t *testing.T)  {
