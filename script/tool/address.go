@@ -2,15 +2,15 @@ package tool
 
 import (
 	"fmt"
+	"github.com/HalalChain/qitmeer-lib/common/encode/base58"
+	"github.com/HalalChain/qitmeer-lib/common/hash"
+	"github.com/HalalChain/qitmeer-lib/core/address"
+	"github.com/HalalChain/qitmeer-lib/crypto/bip32"
+	"github.com/HalalChain/qitmeer-lib/crypto/ecc"
+	"github.com/HalalChain/qitmeer-lib/crypto/seed"
+	"github.com/HalalChain/qitmeer-lib/params"
 	"log"
 	"encoding/hex"
-	"Nox-DAG-test/script/tool/seed"
-	"Nox-DAG-test/script/tool/bip32"
-	"Nox-DAG-test/script/tool/ecc"
-	"Nox-DAG-test/script/tool/address"
-	"Nox-DAG-test/script/tool/hash"
-	"Nox-DAG-test/script/tool/base58"
-	"Nox-DAG-test/script/tool/params"
 )
 
 //create address
@@ -18,7 +18,7 @@ func CreateNoxAddr(network string) (priKey string ,base58Addr string ){
 	seed1 := NewEntropy(32)
 	//log.Println("【rand seed】",seed)
 	privateKey := EcNew("secp256k1",seed1)
-	log.Println("【HLC private key】",privateKey)
+	//log.Println("【HLC private key】",privateKey)
 	publicKey := EcPrivateKeyToEcPublicKey(false,privateKey)
 	//log.Println("【public key】",publicKey)
 	param := params.PrivNetParams
@@ -39,7 +39,7 @@ func CreateNoxAddr(network string) (priKey string ,base58Addr string ){
 		log.Fatalln("【verify failed】",err)
 		return
 	}
-	log.Println("【HLC base58 address】",addres)
+	//log.Println("【HLC base58 address】",addres)
 	return privateKey,addres.String()
 }
 //generate seed
