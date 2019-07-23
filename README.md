@@ -57,7 +57,7 @@ docker pull halalchain/qitmeer
 * <font color=Chocolate size=3>Finally, we can run this every time we start it up.</font>
 
 ```
-docker run -it -p 18130:18130 -p 18131:18131 halalchain/qitmeer --miningaddr=[Your mining address] --addpeer=[peer1 IP:PORT] [--addpeer=[peer2 IP:PORT]] --httpmodules=miner --httpmodules=nox
+docker run -it -p 18130:18130 -p 18131:18131 halalchain/qitmeer --miningaddr=[Your mining address] --addpeer=[peer1 IP:PORT] [--addpeer=[peer2 IP:PORT]] --modules=miner --modules=qitmeer
 ```
 
 ---
@@ -125,13 +125,13 @@ $ qx ec-to-addr $(qx ec-to-public $(cat miner_key.txt)) > miner_address.txt
 We  add peers manually by specifying addpeer, we recommend adding at least two peers.
 
 ```shell
-docker run -it -p 18130:18130 -p 18131:18131 halalchain/qitmeer --miningaddr=$(cat miner_address.txt) --addpeer=47.103.194.115:18130 --httpmodules=miner --httpmodules=nox
+docker run -it -p 18130:18130 -p 18131:18131 halalchain/qitmeer --miningaddr=$(cat miner_address.txt) --addpeer=47.103.194.115:18130 --modules=miner --modules=qitmeer
 ```
 
 ## mining
 before we send transactions, we need to get some rewards by mining.
 
-Note: this command is executed by CPU, so it takes more patience to get the result. Because this command is private RPC interface, so you must enable `httpmodules=miner` for qitmeer.
+Note: this command is executed by CPU, so it takes more patience to get the result. Because this command is private RPC interface, so you must enable `modules=miner` for qitmeer.
 
 ```shell
 $ cli generate 1
@@ -262,7 +262,7 @@ $  cli sendRawTx $(cat tx.txt)
 | debuglevel | Logging level {trace, debug, info, warn, error, critical} |
 | addpeer | Add a peer to connect with at startup |
 | connect | Connect only to the specified peers at startup |
-| httpmodules | It is a list of API modules to expose via the HTTP RPC interface. (Current valid values:nox,miner)|
+| modules | It is a list of API modules to expose via the HTTP RPC interface. (Current valid values:qitmeer,miner)|
 
 
 ## Full nodes
@@ -286,7 +286,7 @@ docker run -it -p 18130:18130 -p 18131:18131 halalchain/qitmeer --addpeer=x.x.x.
 
 * Some RPC method interfaces are private, if you want to open all RPC interface of the full node, you have to do this:
 ```
-docker run -it -p 18130:18130 -p 18131:18131 halalchain/qitmeer --httpmodules=nox --httpmodules=miner
+docker run -it -p 18130:18130 -p 18131:18131 halalchain/qitmeer --modules=qitmeer --modules=miner
 ```
 
 ## Remarks
