@@ -4,9 +4,9 @@ resource "aws_security_group" "ec2_private_security_group" {
   vpc_id      = aws_vpc.test-vpc.id
 
   ingress {
-    from_port   = 80
+    from_port   = 18130
     protocol    = "TCP"
-    to_port     = 80
+    to_port     = 18130
     cidr_blocks = ["0.0.0.0/0"]
   }
 
