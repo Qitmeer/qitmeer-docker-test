@@ -1,4 +1,4 @@
-# This is the directory for all the Terraform scripts for HLC tests
+# This is the directory for all the Terraform scripts for Qitmeer tests
 
 Use AWS Spot instances to run all the test cases
 
