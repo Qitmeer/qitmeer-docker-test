@@ -28,14 +28,14 @@ sudo apt-get install \
     apt-transport-https \
     ca-certificates \
     curl \
-    software-properties-common
+    software-properties-common -y
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
 sudo apt-get update
-sudo apt-get install docker-ce
+sudo apt-get install docker-ce -y
 ```
 * If you are already a root user, you can ignore next step
 ```
@@ -52,12 +52,12 @@ Other systems platforms are similar.You can go [docker](https://www.docker.com/g
 #### ***2.Deployment image:***
 * First we need to initialize the image, Of course, when you want the latest image, you can also use the following command.
 ```
-docker pull halalchain/qitmeer
+docker pull qitmeer/qitmeerd
 ```
 * <font color=Chocolate size=3>Finally, we can run this every time we start it up.</font>
 
 ```
-docker run -it -p 18130:18130 -p 18131:18131 halalchain/qitmeer --miningaddr=[Your mining address] --addpeer=[peer1 IP:PORT] [--addpeer=[peer2 IP:PORT]] --modules=miner --modules=qitmeer
+docker run -it -p 18130:18130 -p 18131:18131 qitmeer/qitmeerd --miningaddr=[Your mining address] --addpeer=[peer1 IP:PORT] [--addpeer=[peer2 IP:PORT]] --modules=miner --modules=qitmeer
 ```
 
 ---
@@ -67,7 +67,7 @@ CLI is a toolset to interact with server by RPC.
 
 * make alias
 ```shell
-$ alias cli="docker run --rm halalchain/qitmeer cli"
+$ alias cli="docker run --rm qitmeer/qitmeerd cli"
 ```
 
 * list all commands
@@ -86,13 +86,13 @@ $ cli block
 ---
 * If you want to send a signed transaction, you can do this:
 ```
-docker run --rm halalchain/qitmeer cli sendRawTx [hex]
+docker run --rm qitmeer/qitmeerd cli sendRawTx [hex]
 ```
 ## QX
 QX is a toolset to assistant client-side operations.
 * make alias
 ```shell
-$ alias qx="docker run --rm halalchain/qx"
+$ alias qx="docker run --rm qitmeer/qx"
 ```
 
 * list all commands
@@ -125,7 +125,7 @@ $ qx ec-to-addr $(qx ec-to-public $(cat miner_key.txt)) > miner_address.txt
 We  add peers manually by specifying addpeer, we recommend adding at least two peers.
 
 ```shell
-docker run -it -p 18130:18130 -p 18131:18131 halalchain/qitmeer --miningaddr=$(cat miner_address.txt) --addpeer=47.103.194.115:18130 --modules=miner --modules=qitmeer
+docker run -it -p 18130:18130 -p 18131:18131 qitmeer/qitmeerd --miningaddr=$(cat miner_address.txt) --addpeer=47.103.194.115:18130 --modules=miner --modules=qitmeer
 ```
 
 ## mining
@@ -275,18 +275,18 @@ $  cli sendRawTx $(cat tx.txt)
 
 * For example:
 ```
-docker run -it -p 18130:18130 -p 18131:18131 halalchain/qitmeer --addpeer=47.103.194.115:18130
+docker run -it -p 18130:18130 -p 18131:18131 qitmeer/qitmeerd --addpeer=47.103.194.115:18130
 ```
 
 * If you have multiple nodes to add, you can configure them repeatedly.
  ```
-docker run -it -p 18130:18130 -p 18131:18131 halalchain/qitmeer --addpeer=x.x.x.x:x --addpeer=x.x.x.x:x
+docker run -it -p 18130:18130 -p 18131:18131 qitmeer/qitmeerd --addpeer=x.x.x.x:x --addpeer=x.x.x.x:x
 ``` 
 ---
 
 * Some RPC method interfaces are private, if you want to open all RPC interface of the full node, you have to do this:
 ```
-docker run -it -p 18130:18130 -p 18131:18131 halalchain/qitmeer --modules=qitmeer --modules=miner
+docker run -it -p 18130:18130 -p 18131:18131 qitmeer/qitmeerd --modules=qitmeer --modules=miner
 ```
 
 ## Remarks
