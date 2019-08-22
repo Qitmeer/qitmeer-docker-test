@@ -3,7 +3,6 @@ module script
 go 1.12
 
 require (
-	github.com/Qitmeer/qitmeer-lib v0.0.0-20190821055950-6e464cedd380 // indirect
 	qitmeer-docker-test/script/tool v0.0.0-00010101000000-000000000000
 )
 
