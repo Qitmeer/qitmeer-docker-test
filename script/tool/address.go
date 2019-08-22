@@ -2,13 +2,13 @@ package tool
 
 import (
 	"fmt"
-	"github.com/HalalChain/qitmeer-lib/common/encode/base58"
-	"github.com/HalalChain/qitmeer-lib/common/hash"
-	"github.com/HalalChain/qitmeer-lib/core/address"
-	"github.com/HalalChain/qitmeer-lib/crypto/bip32"
-	"github.com/HalalChain/qitmeer-lib/crypto/ecc"
-	"github.com/HalalChain/qitmeer-lib/crypto/seed"
-	"github.com/HalalChain/qitmeer-lib/params"
+	"github.com/Qitmeer/qitmeer-lib/common/encode/base58"
+	"github.com/Qitmeer/qitmeer-lib/common/hash"
+	"github.com/Qitmeer/qitmeer-lib/core/address"
+	"github.com/Qitmeer/qitmeer-lib/crypto/bip32"
+	"github.com/Qitmeer/qitmeer-lib/crypto/ecc"
+	"github.com/Qitmeer/qitmeer-lib/crypto/seed"
+	"github.com/Qitmeer/qitmeer-lib/params"
 	"log"
 	"encoding/hex"
 )
@@ -20,7 +20,7 @@ func CreateNoxAddr(network string) (priKey string ,base58Addr string ){
 	privateKey := EcNew("secp256k1",seed1)
 	//log.Println("【HLC private key】",privateKey)
 	publicKey := EcPrivateKeyToEcPublicKey(false,privateKey)
-	//log.Println("【public key】",publicKey)
+	log.Println("【public key】",publicKey)
 	param := params.PrivNetParams
 	switch network {
 	case "private":
@@ -97,7 +97,7 @@ func EcPubKeyToAddress(version []byte, pubkey string) string{
 	}
 	h := hash.Hash160(data)
 
-	addr := base58.NoxCheckEncode(h, version[:])
+	addr := base58.QitmeerCheckEncode(h, version[:])
 	return fmt.Sprintf("%s",addr)
 }
 

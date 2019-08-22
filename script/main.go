@@ -58,7 +58,7 @@ func main()  {
 		//spend coinbase money
 		CreateMoneyAccounts(cfg,rpc)
 		//create 999 tx
-		SendMoneyAccounts(cfg,rpc)
+		//SendMoneyAccounts(cfg,rpc)
 	}
 	
 }
@@ -84,11 +84,11 @@ func GetTxID(cfg *tool.Config,rpc *tool.RpcClient){
 	}
 	tx := transactions[0].(map[string]interface{})
 	outs := tx["vout"].([]interface{})
-	if len(outs) < 3{
+	if len(outs) < 1{
 		log.Fatalln("not have coinbase")
 		os.Exit(0)
 	}
-	coinbase := outs[2].(map[string]interface{})
+	coinbase := outs[0].(map[string]interface{})
 	scriptPubKey := coinbase["scriptPubKey"].(map[string]interface{})
 	//log.Println(scriptPubKey["addresses"])
 	addrs := scriptPubKey["addresses"].([]interface{})
@@ -96,7 +96,7 @@ func GetTxID(cfg *tool.Config,rpc *tool.RpcClient){
 		log.Fatalln("the coinbase is belong to the account")
 		os.Exit(0)
 	}
-	cfg.FromTransactionHash = tx["txid"].(string)
+	cfg.FromTransactionHash = tx["txhash"].(string)
 	CoinbaseAmount = coinbase["amount"].(float64)
 	cfg.AddressFile = fmt.Sprintf("%s%d",cfg.AddressFile,cfg.Height)
 	cfg.TXFile = fmt.Sprintf("%s%d",cfg.TXFile,cfg.Height)
@@ -115,7 +115,7 @@ func CreateAddresses(cfg *tool.Config){
 }
 func CreateMoneyAccounts(cfg *tool.Config,rpc *tool.RpcClient){
 	addresses := make([]string,0)
-	csvContent := tool.ReadCsv(cfg.AddressFile,0,999)
+	csvContent := tool.ReadCsv(cfg.AddressFile,0,1)
 	for _,v:=range csvContent{
 		addresses = append(addresses,v[1])
 	}
@@ -129,7 +129,7 @@ func SendRawTxHash(allCoinbase float64,fromPK string ,fromTxHash string, fromAdd
 	//build tx in out
 	txLn := tool.TxInputsFlag{}
 	//coinbase trx
-	txLn.SetFrom(fromTxHash,2)
+	txLn.SetFrom(fromTxHash,0)
 
 	txOut := tool.TxOutputsFlag{}
 	txOut.SetSmallOut(allCoinbase,amout,toAddrs,fromAddr)
