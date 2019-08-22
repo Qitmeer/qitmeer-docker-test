@@ -3,16 +3,17 @@
 ## Test Environment
 
 #### Full Node
-Each node is an Aliyun VPS, total six full nodes.
+Each node is an AWS EC2 instance or aliyun VPS, total five full nodes.
 
-Hardware Configurations:
-1. CPU: Intel Xeon E5-2682v4, 2.50 GHz, 1 core
-2. Memory: 2 GB
-3. Disk: Ultra Disk 40 GB
+Hardware Configurations of the node, which receiving the test transactions:
+1. AWS instance type: c5d.xlarge
+2. vCPU: 4
+3. Memory: 7.45 GB
+4. Disk: 25 GB
 
 Software Configurations:
-1. Operation System: ubuntu 16.04.4 LTS
-2. Golang Version: go1.12.5.  linux-amd64
+1. Operation System: Ubuntu, 16.04 LTS, Canonical
+2. Golang Version: go1.12.7.  linux-amd64
 
 Full node Configurations:
 1. Memory Pool size: 1000 tx
@@ -22,10 +23,10 @@ Full node Configurations:
 
 #### Test Client
 Hardware Configurations:
-1. CPU: Intel® Core™ i7-8550U CPU @ 1.80GHz 2.00GHz
-2. Memory: 8 GB
-3. Disk: LITEON CV3-8D128
-4. Network Bandwidth: 100 Mbps
+1. CPU: Intel(R) Core(TM) i7-8700K CPU@3.70GHz
+2. Memory: 16 GB
+3. Disk: Kingston SSD 256 GB
+4. Network Bandwidth: 300 Mbps
 
 Software Configurations:
 1. Operation System: Windows 10
@@ -33,10 +34,10 @@ Software Configurations:
 3. Stress Testing Software: Apache JMeter 5.1.1
 
 #### Miner
-1. CPU:Intel® Core™ G1840 CPU @ 2.8GHz 2 core
-2. Memory: 4G
-3. GPU: Sapphire RX580 8G
-4. Disk: Turxun 120 SSD
+1. CPU: Intel(R) Core(TM) i7-8700K CPU@3.70GHz
+2. Memory: 16 GB
+3. GPU: GeForce GTX 1060 5GB
+4. Disk: Kingston SSD 256 GB
 
 ## Build Qitmeer-DAG Network
 How to quickly run the Qitmeer-DAG Network, see [here.](https://github.com/HalalChain/qitmeer-docker-test/blob/master/README.md)
@@ -84,8 +85,9 @@ TPS = Number of Successful Transactions /(Completion Time - Start Transaction Ti
 
 ## Transactions and Blocks log
 ![Txs_Blocks_log](./images/transactionLog.jpg)
-It can be seen that a total of 5995 transactions have been sent, which takes 00:21:14, 
-which is 1274 seconds, and the transaction transmission speed is 4.7 transactions/s.
+
+It can be seen that a total of 9955 transactions have been sent, which takes 00:21:21, 
+which is 1281 seconds, and the transaction transmission speed is 7.77 transactions/s.
 
 ## Test result
 Number of transactions/sec:
@@ -102,34 +104,17 @@ the final results are as follows:
 
 num of TXs | send rate | success % | num of blocks | duration | TPS 
 ------------ | ------------- | ------------- | ------------- | ------------- | -------------
-6,000 | 500/s  | 99.91% | 7 | 1199s | 5
+10,000 | 500/s  | 99.56% | 10 | 1281s | 7.77
 
 ## Conclusion
 During the test, different transmission rates were used and different transaction volumes were tested. 
-The test results TPS reached more than 5.
+The test results TPS reached more than 7.77.
 
-some issue：
+TPS is very related to the following two configurations: 
+1) The maximum number of transactions in a block (block sizes)
+2) The average block time
+
+issue：
 - connection timed out error:
 ![connectionTimeOut](./images/connectionTimeOut.jpg)
-This error occurs when the request timed out due to server-side CPU 100% .
-
-- references bad output:
-```
-2019-05-16|19:47:12.677 [TRACE] Skipping tx %s because it references bad output %s which is not available LOG15_ERROR=
-2019-05-16|19:47:12.680 [TRACE] Skipping tx %s because it references bad output %s which is not available LOG15_ERROR=
-2019-05-16|19:47:12.683 [TRACE] Skipping tx %s because it references bad output %s which is not available LOG15_ERROR=
-2019-05-16|19:47:12.684 [TRACE] Skipping tx %s because it references bad output %s which is not available LOG15_ERROR=
-2019-05-16|19:47:12.685 [TRACE] Skipping tx %s because it references bad output %s which is not available LOG15_ERROR=
-```
-
-
-
- 
- 
-
-
-
-
-
-
 
