@@ -58,7 +58,7 @@ func main()  {
 		//spend coinbase money
 		CreateMoneyAccounts(cfg,rpc)
 		//create 999 tx
-		//SendMoneyAccounts(cfg,rpc)
+		SendMoneyAccounts(cfg,rpc)
 	}
 	
 }
@@ -115,7 +115,7 @@ func CreateAddresses(cfg *tool.Config){
 }
 func CreateMoneyAccounts(cfg *tool.Config,rpc *tool.RpcClient){
 	addresses := make([]string,0)
-	csvContent := tool.ReadCsv(cfg.AddressFile,0,1)
+	csvContent := tool.ReadCsv(cfg.AddressFile,0,999)
 	for _,v:=range csvContent{
 		addresses = append(addresses,v[1])
 	}
