@@ -90,8 +90,8 @@ func TxDecode(rawTxStr string) []byte{
 	}
 
 	jsonTx := &json.OrderedResult{
-		{"txid", tx.TxHashFull().String()},
-		{"txhash", tx.TxHashFull().String()},
+		{"txid", tx.TxHash().String()},
+		{"txhash", tx.TxHash().String()},
 		{"version",  int32(tx.Version)},
 		{"locktime", tx.LockTime},
 		{"expire",tx.Expire},
@@ -122,7 +122,7 @@ func TxEncode(version TxVersionFlag, lockTime TxLockTimeFlag, txIn TxInputsFlag,
 			log.Fatalln(err)
 		}
 		prevOut := types.NewOutPoint(txHash, input.index)
-		txIn := types.NewTxInput(prevOut, types.NullValueIn, []byte{})
+		txIn := types.NewTxInput(prevOut,[]byte{})
 		txIn.Sequence = input.sequence
 		if lockTime != 0 {
 			txIn.Sequence = types.MaxTxInSequenceNum - 1
@@ -168,7 +168,7 @@ func TxEncode(version TxVersionFlag, lockTime TxLockTimeFlag, txIn TxInputsFlag,
 		txOut := types.NewTxOutput(uint64(atomic), pkScript)
 		mtx.AddTxOut(txOut)
 	}
-	mtxHex, err := mtx.Serialize(types.TxSerializeNoWitness)
+	mtxHex, err := mtx.Serialize()
 	if err != nil {
 		log.Fatalln(err)
 	}
