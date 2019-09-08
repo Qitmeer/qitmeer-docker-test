@@ -96,7 +96,7 @@ func GetTxID(cfg *tool.Config,rpc *tool.RpcClient){
 		log.Fatalln("the coinbase is belong to the account")
 		os.Exit(0)
 	}
-	cfg.FromTransactionHash = tx["txhash"].(string)
+	cfg.FromTransactionHash = tx["txid"].(string)
 	CoinbaseAmount = coinbase["amount"].(float64)
 	cfg.AddressFile = fmt.Sprintf("%s%d",cfg.AddressFile,cfg.Height)
 	cfg.TXFile = fmt.Sprintf("%s%d",cfg.TXFile,cfg.Height)
