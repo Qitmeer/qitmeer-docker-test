@@ -7,15 +7,15 @@ import (
 	"bytes"
 	"encoding/hex"
 	"fmt"
-	"github.com/HalalChain/qitmeer-lib/common/hash"
-	"github.com/HalalChain/qitmeer-lib/common/marshal"
-	"github.com/HalalChain/qitmeer-lib/core/address"
-	"github.com/HalalChain/qitmeer-lib/core/json"
-	"github.com/HalalChain/qitmeer-lib/core/message"
-	"github.com/HalalChain/qitmeer-lib/core/types"
-	"github.com/HalalChain/qitmeer-lib/crypto/ecc"
-	"github.com/HalalChain/qitmeer-lib/engine/txscript"
-	"github.com/HalalChain/qitmeer-lib/params"
+	"github.com/Qitmeer/qitmeer-lib/common/hash"
+	"github.com/Qitmeer/qitmeer-lib/common/marshal"
+	"github.com/Qitmeer/qitmeer-lib/core/address"
+	"github.com/Qitmeer/qitmeer-lib/core/json"
+	"github.com/Qitmeer/qitmeer-lib/core/message"
+	"github.com/Qitmeer/qitmeer-lib/core/types"
+	"github.com/Qitmeer/qitmeer-lib/crypto/ecc"
+	"github.com/Qitmeer/qitmeer-lib/engine/txscript"
+	"github.com/Qitmeer/qitmeer-lib/params"
 	"github.com/pkg/errors"
 	"log"
 	"math"
@@ -91,7 +91,7 @@ func TxDecode(rawTxStr string) []byte{
 
 	jsonTx := &json.OrderedResult{
 		{"txid", tx.TxHash().String()},
-		{"txhash", tx.TxHashFull().String()},
+		{"txhash", tx.TxHash().String()},
 		{"version",  int32(tx.Version)},
 		{"locktime", tx.LockTime},
 		{"expire",tx.Expire},
@@ -122,7 +122,7 @@ func TxEncode(version TxVersionFlag, lockTime TxLockTimeFlag, txIn TxInputsFlag,
 			log.Fatalln(err)
 		}
 		prevOut := types.NewOutPoint(txHash, input.index)
-		txIn := types.NewTxInput(prevOut, types.NullValueIn, []byte{})
+		txIn := types.NewTxInput(prevOut,[]byte{})
 		txIn.Sequence = input.sequence
 		if lockTime != 0 {
 			txIn.Sequence = types.MaxTxInSequenceNum - 1
@@ -168,7 +168,7 @@ func TxEncode(version TxVersionFlag, lockTime TxLockTimeFlag, txIn TxInputsFlag,
 		txOut := types.NewTxOutput(uint64(atomic), pkScript)
 		mtx.AddTxOut(txOut)
 	}
-	mtxHex, err := mtx.Serialize(types.TxSerializeNoWitness)
+	mtxHex, err := mtx.Serialize()
 	if err != nil {
 		log.Fatalln(err)
 	}

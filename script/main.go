@@ -84,11 +84,11 @@ func GetTxID(cfg *tool.Config,rpc *tool.RpcClient){
 	}
 	tx := transactions[0].(map[string]interface{})
 	outs := tx["vout"].([]interface{})
-	if len(outs) < 3{
+	if len(outs) < 1{
 		log.Fatalln("not have coinbase")
 		os.Exit(0)
 	}
-	coinbase := outs[2].(map[string]interface{})
+	coinbase := outs[0].(map[string]interface{})
 	scriptPubKey := coinbase["scriptPubKey"].(map[string]interface{})
 	//log.Println(scriptPubKey["addresses"])
 	addrs := scriptPubKey["addresses"].([]interface{})
@@ -129,7 +129,7 @@ func SendRawTxHash(allCoinbase float64,fromPK string ,fromTxHash string, fromAdd
 	//build tx in out
 	txLn := tool.TxInputsFlag{}
 	//coinbase trx
-	txLn.SetFrom(fromTxHash,2)
+	txLn.SetFrom(fromTxHash,0)
 
 	txOut := tool.TxOutputsFlag{}
 	txOut.SetSmallOut(allCoinbase,amout,toAddrs,fromAddr)
