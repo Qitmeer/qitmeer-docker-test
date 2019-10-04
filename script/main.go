@@ -84,16 +84,16 @@ func GetTxID(cfg *tool.Config, rpc *tool.RpcClient) {
 	}
 	tx := transactions[0].(map[string]interface{})
 	outs := tx["vout"].([]interface{})
-	if len(outs) < 1 {
-		log.Fatalln("not have coinbase")
+	if len(outs) < 1{
+		log.Fatalln("not have coinbase value")
 		os.Exit(0)
 	}
 	coinbase := outs[0].(map[string]interface{})
 	scriptPubKey := coinbase["scriptPubKey"].(map[string]interface{})
 	//log.Println(scriptPubKey["addresses"])
 	addrs := scriptPubKey["addresses"].([]interface{})
-	if !tool.InArrayString(cfg.FromAddress, addrs) {
-		log.Fatalln("the coinbase is not belong to the account")
+	if !tool.InArrayString(cfg.FromAddress,addrs){
+		log.Fatalln("the coinbase block of order:",cfg.Height," is not belong to the account ",cfg.FromAddress)
 		os.Exit(0)
 	}
 	cfg.FromTransactionHash = tx["txid"].(string)
