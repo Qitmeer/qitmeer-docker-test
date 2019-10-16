@@ -2,13 +2,13 @@ package tool
 
 import (
 	"fmt"
-	"github.com/Qitmeer/qitmeer-lib/common/encode/base58"
-	"github.com/Qitmeer/qitmeer-lib/common/hash"
-	"github.com/Qitmeer/qitmeer-lib/core/address"
-	"github.com/Qitmeer/qitmeer-lib/crypto/bip32"
-	"github.com/Qitmeer/qitmeer-lib/crypto/ecc"
-	"github.com/Qitmeer/qitmeer-lib/crypto/seed"
-	"github.com/Qitmeer/qitmeer-lib/params"
+	"github.com/Qitmeer/qitmeer/common/encode/base58"
+	"github.com/Qitmeer/qitmeer/common/hash"
+	"github.com/Qitmeer/qitmeer/core/address"
+	"github.com/Qitmeer/qitmeer/crypto/bip32"
+	"github.com/Qitmeer/qitmeer/crypto/ecc"
+	"github.com/Qitmeer/qitmeer/crypto/seed"
+	"github.com/Qitmeer/qitmeer/params"
 	"log"
 	"encoding/hex"
 )
@@ -24,12 +24,12 @@ func CreateNoxAddr(network string) (priKey string ,base58Addr string ){
 	param := params.PrivNetParams
 	switch network {
 	case "private":
-		break
 	case "test":
 		param = params.TestNetParams
-		break
+	case "mix":
+		param = params.MixNetParams
 	case "main":
-		break
+		param = params.MainNetParams
 	}
 
 	//param := params.MainNetParams
