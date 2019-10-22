@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"qitmeer-docker-test/script/tool"
+	"github.com/Qitmeer/qitmeer-docker-test/script/tool"
 	"sort"
 	"strings"
 )

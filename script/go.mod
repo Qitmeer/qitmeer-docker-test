@@ -9,7 +9,3 @@ replace (
 	golang.org/x/text => github.com/golang/text v0.3.0
 	qitmeer-docker-test/script/tool => ./tool
 )
-
-require (
-	qitmeer-docker-test/script/tool v0.0.0-00010101000000-000000000000
-)
