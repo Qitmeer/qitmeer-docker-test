@@ -31,10 +31,10 @@ func main() {
 	rpc.Cfg = cfg
 	switch cfg.Action {
 	case "generate-new-address":
-		log.Println("Create new HLC Address")
+		log.Println("Create new Qitmeer Address")
 		pk, addr := tool.CreateNoxAddr(cfg.Network)
-		log.Println("【HLC private key】", pk)
-		log.Println("【HLC base58 address】", addr)
+		log.Println("【Qitmeer private key】", pk)
+		log.Println("【Qitmeer base58 address】", addr)
 	case "batch-generate-address-signed-transactions":
 		fallthrough
 	default:
@@ -53,7 +53,7 @@ func main() {
 		log.Println("Batch generate addresses and signed transactions")
 		//get the txid by heigth witch can spend
 		GetTxID(cfg, rpc)
-		//create 999 rand hlc address
+		//create 999 rand Qitmeer address
 		CreateAddresses(cfg)
 		//spend coinbase money
 		CreateMoneyAccounts(cfg, rpc)
@@ -154,7 +154,7 @@ func SendRawTxHash(allCoinbase float64, fromPK string, fromTxHash string, fromAd
 	return signHash
 }
 
-// 0.01 amount ,  hlc 0 addr => 1 addr 1 addr => 2 addr ... 998 addr => 0 addr
+// 0.01 amount ,  Qitmeer 0 addr => 1 addr 1 addr => 2 addr ... 998 addr => 0 addr
 func SendMoneyAccounts(cfg *tool.Config, rpc *tool.RpcClient) {
 
 	csvContent := tool.ReadCsv(cfg.AddressFile, 0, 999)

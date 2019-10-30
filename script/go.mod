@@ -11,7 +11,5 @@ replace (
 )
 
 require (
-	github.com/Qitmeer/qitmeer v0.0.0-20190930100550-7179932d1101 // indirect
-	github.com/Qitmeer/qitmeer-lib v0.0.0-20190929044832-b10740b316a8 // indirect
 	qitmeer-docker-test/script/tool v0.0.0-00010101000000-000000000000
 )
