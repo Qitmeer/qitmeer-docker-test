@@ -23,7 +23,7 @@ var TxRAW []byte
 func main() {
 	cfg, _, err := tool.LoadConfig()
 	if err != nil {
-		log.Fatal("Config file error,please check it.【", err, "】")
+		log.Fatal("Config file error,please check it.", err)
 		return
 	}
 
@@ -33,8 +33,8 @@ func main() {
 	case "generate-new-address":
 		log.Println("Create new Qitmeer Address")
 		pk, addr := tool.CreateNoxAddr(cfg.Network)
-		log.Println("【Qitmeer private key】", pk)
-		log.Println("【Qitmeer base58 address】", addr)
+		log.Println("Qitmeer private key", pk)
+		log.Println("Qitmeer base58 address", addr)
 	case "batch-generate-address-signed-transactions":
 		fallthrough
 	default:
