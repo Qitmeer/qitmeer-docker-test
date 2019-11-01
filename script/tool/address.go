@@ -16,11 +16,9 @@ import (
 //create address
 func CreateNoxAddr(network string) (priKey string ,base58Addr string ){
 	seed1 := NewEntropy(32)
-	//log.Println("【rand seed】",seed)
 	privateKey := EcNew("secp256k1",seed1)
-	//log.Println("【HLC private key】",privateKey)
 	publicKey := EcPrivateKeyToEcPublicKey(false,privateKey)
-	log.Println("【public key】",publicKey)
+	log.Println("public key",publicKey)
 	param := params.PrivNetParams
 	switch network {
 	case "private":
@@ -36,10 +34,9 @@ func CreateNoxAddr(network string) (priKey string ,base58Addr string ){
 	addr := EcPubKeyToAddress(param.PubKeyHashAddrID[:],publicKey)
 	addres,err := address.DecodeAddress(addr)
 	if err != nil{
-		log.Fatalln("【verify failed】",err)
+		log.Fatalln("verify failed",err)
 		return
 	}
-	//log.Println("【HLC base58 address】",addres)
 	return privateKey,addres.String()
 }
 //generate seed
@@ -55,7 +52,7 @@ func NewEntropy(size uint) string{
 func EcNew(curve string, entropyStr string) string{
 	entropy, err := hex.DecodeString(entropyStr)
 	if err!=nil {
-		log.Fatalln("【error】",entropyStr,err)
+		log.Fatalln("error",entropyStr,err)
 		return ""
 	}
 	switch curve {
