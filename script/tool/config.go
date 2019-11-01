@@ -6,9 +6,9 @@
 package tool
 
 import (
+	`github.com/Qitmeer/qitmeer-docker-test/script/tool/go-flags`
 	"os"
 	"path/filepath"
-	"github.com/Qitmeer/qitmeer-docker-test/script/tool/go-flags"
 	"strings"
 )
 

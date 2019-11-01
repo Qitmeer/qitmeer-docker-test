@@ -3,9 +3,9 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	`github.com/Qitmeer/qitmeer-docker-test/script/tool`
 	"log"
 	"os"
-	"github.com/Qitmeer/qitmeer-docker-test/script/tool"
 	"sort"
 	"strings"
 )
